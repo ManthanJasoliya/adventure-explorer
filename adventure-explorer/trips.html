@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Trips - Adventure Explorer</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">Adventure Explorer</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="trips.html" class="active">Trips</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <button class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Snow Treks -->
+    <section class="trips-section">
+        <div class="container">
+            <h2>Snow Treks</h2>
+            <div class="trips-slider">
+                <button class="slider-arrow prev-arrow">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="trips-grid">
+                    <!-- Trip cards will be dynamically populated -->
+                </div>
+                <button class="slider-arrow next-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Summer Events -->
+    <section class="trips-section">
+        <div class="container">
+            <h2>Summer Events</h2>
+            <div class="trips-slider">
+                <button class="slider-arrow prev-arrow">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="trips-grid">
+                    <!-- Trip cards will be dynamically populated -->
+                </div>
+                <button class="slider-arrow next-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Highlighted Events -->
+    <section class="trips-section">
+        <div class="container">
+            <h2>Highlighted Events</h2>
+            <p class="section-subtitle">Recommended camps by our Instructors</p>
+            <div class="trips-slider">
+                <button class="slider-arrow prev-arrow">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="trips-grid">
+                    <!-- Trip cards will be dynamically populated -->
+                </div>
+                <button class="slider-arrow next-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <!-- <div class="container">
+            <h2>Stay Updated</h2>
+            <p>Subscribe to our newsletter for the latest adventure updates and special offers.</p>
+            <form id="newsletter-form">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+        </div> -->
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Adventure Explorer</h3>
+                    <p>Discover the beauty and diversity of India through our curated adventure trips.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="trips.html">Trips</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>Email: jasoliya28072006@gmail.com</p>
+                    <p>Phone: +91 84014 87213</p>
+                    <p>Address: IIIT Vadodara, Gandhinagar, India</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/manthannn_28_?igsh=Ym50Y282cnVnMnJ2"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@InvincibleNGOAhmedabad"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Adventure Explorer. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tripsGrids = document.querySelectorAll('.trips-grid');
+            
+            // Populate Snow Treks
+            populateTrips(tripsGrids[0], trips.snowTreks);
+            
+            // Populate Summer Events
+            populateTrips(tripsGrids[1], trips.summerEvents);
+            
+            // Populate Highlighted Events
+            populateTrips(tripsGrids[2], trips.highlightedEvents);
+
+            // Initialize sliders
+            initializeSliders();
+        });
+
+        function populateTrips(grid, tripsData) {
+            tripsData.forEach(trip => {
+                const card = document.createElement('div');
+                card.className = 'trip-card';
+                
+                const nextDate = trip.dates[0]; // Get the next available date
+                
+                card.innerHTML = `
+                    <div class="trip-image">
+                        <img src="${trip.heroImage}" alt="${trip.title}">
+                        <h3 class="trip-title">${trip.title}</h3>
+                        <div class="trip-features">
+                            <span><i class="fas fa-bus"></i></span>
+                            <span><i class="fas fa-utensils"></i></span>
+                            <span><i class="fas fa-campground"></i></span>
+                            <span><i class="fas fa-hiking"></i></span>
+                            <span><i class="fas fa-camera"></i></span>
+                        </div>
+                    </div>
+                    <div class="trip-info">
+                        <div class="trip-details">
+                            <p class="trip-location"><i class="fas fa-map-marker-alt"></i> ${trip.location}</p>
+                            <p class="trip-duration"><i class="far fa-clock"></i> ${trip.duration}</p>
+                            <p class="trip-difficulty"><i class="fas fa-mountain"></i> ${trip.difficulty}</p>
+                        </div>
+                        <div class="trip-dates">
+                            <p class="next-date"><i class="far fa-calendar-alt"></i> Next Trip: ${nextDate}</p>
+                        </div>
+                        <div class="trip-price">
+                            <span class="price">₹${trip.price.toLocaleString()}</span>
+                            <span class="per-person">per person</span>
+                        </div>
+                        <a href="trip-details.html?id=${trip.id}" class="btn btn-secondary">View Details</a>
+                    </div>
+                `;
+                
+                grid.appendChild(card);
+            });
+        }
+
+        function initializeSliders() {
+            document.querySelectorAll('.trips-slider').forEach(slider => {
+                const grid = slider.querySelector('.trips-grid');
+                const prevBtn = slider.querySelector('.prev-arrow');
+                const nextBtn = slider.querySelector('.next-arrow');
+                let scrollAmount = 0;
+                const cardWidth = 400; // Width of each card including margin
+
+                prevBtn.addEventListener('click', () => {
+                    scrollAmount = Math.max(scrollAmount - cardWidth, 0);
+                    grid.style.transform = `translateX(-${scrollAmount}px)`;
+                });
+
+                nextBtn.addEventListener('click', () => {
+                    const maxScroll = grid.scrollWidth - grid.clientWidth;
+                    scrollAmount = Math.min(scrollAmount + cardWidth, maxScroll);
+                    grid.style.transform = `translateX(-${scrollAmount}px)`;
+                });
+            });
+        }
+    </script>
+</body>
+</html> 
